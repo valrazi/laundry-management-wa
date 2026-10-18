@@ -1,0 +1,60 @@
+PANDUAN SINGKAT - GATEWAY WHATSAPP
+==================================
+
+Jalankan file .bat secara berurutan. Cukup klik dua kali.
+
+Gateway ini bekerja berpasangan dengan aplikasi laundry dan memakai
+database yang sama. Jalankan aplikasi laundry lebih dulu.
+
+
+URUTAN PEMAKAIAN PERTAMA KALI
+-----------------------------
+1. 1-INSTALL.bat     Memasang semua komponen. Perlu internet.
+2. 2-MIGRATE.bat     Memeriksa koneksi database.
+                     Tabel database dibuat oleh aplikasi laundry, jadi
+                     jalankan 2-MIGRATE.bat di folder laundry-management
+                     lebih dulu.
+3. 3-JALANKAN.bat    Menjalankan gateway, browser terbuka otomatis.
+
+Saat pertama kali jalan, akan muncul QR.
+Scan dengan WhatsApp di HP:
+   Pengaturan - Perangkat Tertaut - Tautkan perangkat
+
+Cukup sekali. Berikutnya tidak perlu scan lagi.
+
+
+PEMAKAIAN SEHARI-HARI
+---------------------
+1. Klik 3-JALANKAN.bat di folder laundry-management.
+2. Klik 3-JALANKAN.bat di folder gateway ini.
+Jangan tutup kedua jendela hitam itu selama dipakai.
+
+
+BILA ADA VERSI BARU
+-------------------
+1. Tutup gateway dan aplikasi laundry.
+2. Klik 4-UPDATE.bat di masing-masing folder.
+3. Jalankan lagi 3-JALANKAN.bat.
+
+
+YANG PERLU DIPASANG DI KOMPUTER
+-------------------------------
+- Node.js versi LTS       https://nodejs.org
+- MySQL atau XAMPP        https://www.apachefriends.org
+- Git                     https://git-scm.com
+
+
+BILA MUNCUL PESAN GAGAL
+-----------------------
+- "Tabel auto_reply_logs belum ada"
+      -> jalankan 2-MIGRATE.bat di folder laundry-management.
+- "API key tidak valid"
+      -> API_KEY di .env gateway harus sama dengan FONNTE_TOKEN
+         di .env aplikasi laundry.
+- "WhatsApp belum terhubung"
+      -> scan QR lewat halaman http://127.0.0.1:3001
+- "connection replaced"
+      -> gateway dijalankan dua kali. Tutup salah satunya.
+         Hanya boleh satu jendela gateway.
+
+Detail lengkap ada di README.md.

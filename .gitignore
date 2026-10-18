@@ -1,0 +1,12 @@
+# Dependency
+node_modules/
+
+# Variabel lingkungan (berisi API key)
+.env
+
+# Sesi login WhatsApp. JANGAN pernah di-commit: berisi kredensial perangkat tautan.
+auth_state/
+
+# Log
+*.log
+npm-debug.log*
