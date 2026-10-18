@@ -37,14 +37,14 @@ BILA ADA VERSI BARU
 3. Jalankan lagi 3-JALANKAN.bat.
 
 
-CATATAN TENTANG NGROK
----------------------
-Gateway biasanya TIDAK perlu di-ngrok, karena aplikasi laundry
-memanggilnya lewat localhost. Cukup aplikasi laundry yang dibuka
-dengan 5-NGROK.bat di folder laundry-management.
+GATEWAY TETAP LOKAL
+-------------------
+Gateway TIDAK perlu dibuka ke internet dan TIDAK punya script ngrok.
+Aplikasi laundry memanggilnya lewat localhost, jadi cukup aplikasi
+laundry saja yang dibuka dengan 5-NGROK.bat di folder laundry-management.
 
-Bila gateway tetap dibuka lewat 5-NGROK.bat, QR di halaman status
-otomatis disembunyikan untuk akses dari luar komputer.
+Membiarkannya lokal juga lebih aman, karena halaman status gateway
+menampilkan nomor WhatsApp yang tertaut.
 
 
 YANG PERLU DIPASANG DI KOMPUTER

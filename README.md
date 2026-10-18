@@ -325,9 +325,11 @@ masalah, gunakan `LOG_LEVEL="debug"`.
   untuk keperluan demo/skripsi, bukan nomor utama.
 - **Sesi adalah kredensial.** Folder `auth_state/` setara kunci akun WhatsApp. Jangan
   di-commit, jangan dibagikan, dan jaga izin aksesnya.
-- **Jangan expose tanpa perlindungan.** Halaman `/` menampilkan QR. Secara default
-  gateway hanya mengikat ke `127.0.0.1`. Jika Anda mengubahnya ke `0.0.0.0` atau
-  membukanya lewat tunnel seperti ngrok, lindungi aksesnya.
+- **Biarkan gateway tetap lokal.** Gateway tidak perlu dibuka ke internet: aplikasi
+  laundry memanggilnya lewat `localhost`. Halaman `/` menampilkan QR, dan gateway
+  mengikat ke `127.0.0.1` secara default. Bila Anda tetap membukanya ke `0.0.0.0`
+  atau lewat tunnel, QR otomatis disembunyikan untuk permintaan yang datang lewat
+  proxy, tetapi informasi status tetap terlihat.
 - **Bukan untuk serverless.** Gateway butuh proses Node.js yang hidup terus dan disk
   yang persisten untuk `auth_state/`. Jalankan di komputer/server sendiri, bukan di
   platform serverless.
