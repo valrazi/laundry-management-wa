@@ -13,19 +13,22 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
-export function renderStatusPage(status, autoReply = {}) {
+export function renderStatusPage(status, autoReply = {}, options = {}) {
+  const allowQr = options.allowQr !== false;
   const badge = status.connected
     ? '<span class="badge ok">Terhubung</span>'
     : '<span class="badge off">Belum terhubung</span>';
 
-  const qrBlock = status.qr
-    ? `<div class="qr">
+  const qrBlock = !allowQr
+    ? '<p class="muted">QR disembunyikan karena halaman ini diakses dari luar komputer. Buka langsung di komputer yang menjalankan gateway.</p>'
+    : status.qr
+      ? `<div class="qr">
          <img src="${escapeHtml(status.qr)}" alt="QR WhatsApp" width="320" height="320" />
          <p>Buka <strong>WhatsApp &rarr; Perangkat Tertaut &rarr; Tautkan perangkat</strong>, lalu scan QR di atas.</p>
        </div>`
-    : status.connected
-      ? '<p class="muted">Perangkat sudah tertaut. QR tidak diperlukan.</p>'
-      : '<p class="muted">QR belum siap. Halaman ini menyegarkan diri secara otomatis.</p>';
+      : status.connected
+        ? '<p class="muted">Perangkat sudah tertaut. QR tidak diperlukan.</p>'
+        : '<p class="muted">QR belum siap. Halaman ini menyegarkan diri secara otomatis.</p>';
 
   return `<!doctype html>
 <html lang="id">

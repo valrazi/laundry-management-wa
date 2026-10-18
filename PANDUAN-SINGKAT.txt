@@ -37,6 +37,16 @@ BILA ADA VERSI BARU
 3. Jalankan lagi 3-JALANKAN.bat.
 
 
+CATATAN TENTANG NGROK
+---------------------
+Gateway biasanya TIDAK perlu di-ngrok, karena aplikasi laundry
+memanggilnya lewat localhost. Cukup aplikasi laundry yang dibuka
+dengan 5-NGROK.bat di folder laundry-management.
+
+Bila gateway tetap dibuka lewat 5-NGROK.bat, QR di halaman status
+otomatis disembunyikan untuk akses dari luar komputer.
+
+
 YANG PERLU DIPASANG DI KOMPUTER
 -------------------------------
 - Node.js versi LTS       https://nodejs.org

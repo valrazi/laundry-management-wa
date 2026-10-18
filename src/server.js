@@ -35,9 +35,16 @@ app.get("/health", (_req, res) => {
   res.json({ status: true, service: "whatsapp-gateway" });
 });
 
-app.get("/", async (_req, res) => {
+app.get("/", async (req, res) => {
   const autoReply = await getAutoReplyState(getAutoReplyStore());
-  res.type("html").send(renderStatusPage(getStatus(), autoReply));
+  // Lewat tunnel seperti ngrok, permintaan dari luar tetap tampak berasal dari
+  // localhost, jadi alamat IP tidak bisa dipakai sebagai penentu. Kehadiran
+  // header proxy (x-forwarded-for / forwarded) dipakai sebagai penanda akses
+  // dari luar, dan pada kondisi itu QR tidak ditampilkan.
+  const proxied = Boolean(req.get("x-forwarded-for") || req.get("forwarded"));
+  res
+    .type("html")
+    .send(renderStatusPage(getStatus(), autoReply, { allowQr: !proxied }));
 });
 
 app.get("/status", requireApiKey, (_req, res) => {
